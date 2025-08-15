@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: background 0.3s ease;
+}
+
+.App.dark-mode {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}

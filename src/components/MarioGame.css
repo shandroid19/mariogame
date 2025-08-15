@@ -1,0 +1,288 @@
+.mario-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.mario-game.dark-mode {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.game-header h1 {
+  margin: 0;
+  color: #ffd700;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+  font-size: 2.5em;
+  animation: bounce 2s infinite;
+}
+
+.theme-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .theme-toggle {
+  background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+  color: #1a1a2e;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.game-container {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.game-canvas {
+  border: 3px solid #333;
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  background: #87ceeb;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .game-canvas {
+  border-color: #4a4a4a;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.game-over,
+.pause-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 300px;
+}
+
+.dark-mode .game-over,
+.dark-mode .pause-menu {
+  background: rgba(26, 26, 46, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.game-over h2,
+.pause-menu h2 {
+  margin: 0 0 25px 0;
+  color: #ff6b6b;
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+.dark-mode .game-over h2,
+.dark-mode .pause-menu h2 {
+  color: #ff8e8e;
+}
+
+.game-over p {
+  margin: 20px 0;
+  font-size: 1.3em;
+  color: #e0e0e0;
+}
+
+.dark-mode .game-over p {
+  color: #f0f0f0;
+}
+
+.game-over button,
+.pause-menu button {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 15px 10px;
+  font-family: "Segoe UI", "Arial", sans-serif;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.game-over button:hover,
+.pause-menu button:hover {
+  background: linear-gradient(135deg, #45a049 0%, #4caf50 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.controls {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  width: 100%;
+}
+
+.dark-mode .controls {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.controls h3 {
+  margin: 0 0 20px 0;
+  color: #ffd700;
+  font-size: 1.8em;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.controls p {
+  margin: 12px 0;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+.level-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.level-info p {
+  margin: 8px 0;
+  font-size: 1em;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+.dark-mode .level-info p {
+  color: #d0d0d0;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .game-canvas {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+  }
+
+  .mario-game {
+    padding: 15px;
+  }
+
+  .game-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .game-header h1 {
+    font-size: 2em;
+  }
+
+  .controls {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .game-header h1 {
+    font-size: 1.8em;
+  }
+
+  .theme-toggle {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+
+  .game-over,
+  .pause-menu {
+    padding: 30px 20px;
+    min-width: 280px;
+  }
+}
+
+/* Animation for the game title */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Smooth transitions for theme changes */
+.mario-game * {
+  transition: color 0.3s ease, background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Enhanced button animations */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
